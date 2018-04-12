@@ -1,0 +1,30 @@
+<:Head>
+	<title>Ghana Developers | Follow Creatives</title>
+</:Head>
+
+<Layout isLoading="true">
+</Layout>
+
+<script>
+	import Layout from './_components/Layout.html';
+	import { goto } from 'sapper/runtime';
+	import { authUser } from './api.js';
+	import { getTokens } from './utils.js';
+
+	export default {
+		components: {
+			Layout
+		},
+
+		preload({ params, query }) {
+			let { oauth_token, oauth_verifier } = query;
+			let { tokenSecret } = getTokens();
+			
+			this.fetch(`people.json`).then(r => r.json()).then(people => {
+				authUser(oauth_token, tokenSecret, oauth_verifier, people).then(function(res) {
+					goto('complete');
+				}).catch(error => console.log(error));
+			});
+		}
+	};
+</script>

@@ -1,0 +1,37 @@
+<:Head>
+	<title>Ghana Developers | Follow Creatives</title>
+</:Head>
+
+<Layout page='home' people='{{peopleList}}'>
+	{{#each people as person}}
+	<div class="pure-u-1 pure-u-md-1-3">
+		<Person 
+			name="{{person.name}}"
+			title="{{person.title}}"
+			picture="{{person.picture}}"
+			twitterUrl="{{person.twitterUrl}}" />
+	</div>
+	{{/each}}
+</Layout>
+
+<script>
+	import Layout from './_components/Layout.html';
+	import Person from './_components/Person.html';
+
+	export default {
+		components: {
+			Layout,
+			Person
+		},
+
+		computed: {
+			peopleList: people => people.map(person => person.twitterUrl)
+		},
+
+		preload({ params, query }) {
+			return this.fetch(`people.json`).then(r => r.json()).then(people => {
+				return { people };
+			});
+		}
+	};
+</script>

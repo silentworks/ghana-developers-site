@@ -1,0 +1,106 @@
+<header>
+	<div class="logo">
+		<a href="/"><img src="img/logo.jpg" alt="Ghana Developers"></a>
+	</div>
+
+	<section class="hero">
+		<h1 class="hero-title">{{title}}</h1>
+		<h2 class="hero-subtitle">{{subtitle}}</h2>
+		<div class="follow-all-wrapper">
+			{{#if isLoading}}
+			<Loading />
+			{{else}}
+				{{#if tweetShare}}
+				<button class="follow-all pure-button" on:click='share()'>Tweet</button>
+				{{else}}
+				<button class="follow-all pure-button" on:click='follow()'>Follow all</button>
+				{{/if}}
+			{{/if}}
+		</div>
+	</section>
+</header>
+
+<style>
+	.logo {
+		padding: 40px 20px 30px;
+		text-align: center;
+		max-width: 100%;
+	}
+	.logo img {
+		display: block;
+		height: auto;
+		margin: 0 auto;
+		max-width: 100%;
+	}
+	.hero {
+		padding: 10px 20px 50px;
+		text-align: center;
+	}
+	.hero-title {
+		color: #333;
+		font-size: 28px;
+	}
+	.hero-subtitle {
+		color: #333;
+		font-size: 24px;
+		font-weight: normal;
+	}
+	.follow-all {
+		background-color: rgb(60, 106, 255);
+		color: #fff;
+		font-size: 24px;
+		box-shadow: inset 0 2px 1px 1px #849AE1;
+		border-radius: 4px;
+	}
+	.follow-all:hover {
+		background-color: #87A3FF;
+	}
+</style>
+
+<script>
+	import { goto } from 'sapper/runtime';
+	import Loading from './Loading.html';
+	import { siteUrl, followUsers, requestUserToken, twitterAuthenticateUrl } from '../api.js';
+	import { getTokens, isEmpty } from '../utils.js';
+
+	export default {
+		components: {
+			Loading
+		},
+
+		methods: {
+			share() {
+				let message = "Check out some of Ghana's most talented developers.";
+				goto(`https://twitter.com/intent/tweet?text=${message}&url=${siteUrl()}`);
+			},
+
+			follow() {
+				let { tokenSecret, accessToken, accessTokenSecret } = getTokens();
+				let people = this.get('people');
+				
+				// Show loading indicator
+				this.set({isLoading: true});
+
+				if (!isEmpty(accessToken) && !isEmpty(accessTokenSecret)) {
+					followUsers(accessToken, accessTokenSecret, people).then(function(res) {
+						goto('complete');
+					});
+				} else {
+					// Request for token
+					requestUserToken().then(function(result) {
+						// Save token in local storage
+						sessionStorage.setItem("oauth_token_secret", result.tokenSecret);
+						goto(twitterAuthenticateUrl(result.token));
+					});
+				}
+			}
+		},
+
+		data() {
+			return {
+				tweetShare: false,
+				isLoading: false
+			}
+		}
+	};
+</script>

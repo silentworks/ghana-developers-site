@@ -1,0 +1,42 @@
+<Header :people :isLoading :tweetShare :title :subtitle />
+
+<main class="container">
+	<div class="pure-g">
+		<slot></slot>
+	</div>
+</main>
+
+<footer>
+	<p>made with love by <a class="footer-link" href="https://www.peelingpixels.com/">Peeling Pixels</a>.</p>
+</footer>
+
+<style>
+	.container {
+		max-width: 884px;
+		margin: 0 auto;
+	}
+	footer {
+		padding: 10px 0;
+		text-align: center;
+	}
+</style>
+
+<script>
+	import Header from './Header.html';
+
+	export default {
+		components: {
+			Header
+		},
+
+		data() {
+			return {
+				tweetShare: false,
+				isLoading: false,
+				title: 'Looking for developers who are doing great things in Ghana?',
+				subtitle: 'Here is a list of developers you can follow on Twitter.',
+				people: [],
+			}
+		}
+	};
+</script>
