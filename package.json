@@ -6,6 +6,7 @@
     "dev": "sapper dev",
     "build": "sapper build",
     "export": "sapper export",
+    "prod": "npm run export && cp _redirects export/_redirects",
     "start": "sapper start",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
