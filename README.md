@@ -1,10 +1,9 @@
-# sapper-template
+# Follow Creatives
 
-The default [Sapper](https://github.com/sveltejs/sapper) template. To clone it and get started:
+Site for creatives to follow
+
 
 ```bash
-npx degit sveltejs/sapper-template my-app
-cd my-app
 npm install # or yarn!
 npm run dev
 ```
@@ -64,24 +63,6 @@ In lieu of documentation (bear with us), consult the files to see what variables
 
 Sapper uses webpack to provide code-splitting, dynamic imports and hot module reloading, as well as compiling your Svelte components. As long as you don't do anything daft, you can edit the configuration files to add whatever loaders and plugins you'd like.
 
-
-## Production mode and deployment
-
-To start a production version of your app, run `npm run build && npm start`. This will disable hot module replacement, and activate the appropriate webpack plugins.
-
-You can deploy your application to any environment that supports Node 8 or above. As an example, to deploy to [Now](https://zeit.co/now), run these commands:
-
-```bash
-npm install -g now
-now
-```
-
-
-## Bugs and feedback
-
-Sapper is in early development, and may have the odd rough edge here and there. Please be vocal over on the [Sapper issue tracker](https://github.com/sveltejs/sapper/issues).
-
-
 ## License
 
-[LIL](LICENSE)
+[MIT](LICENSE)
