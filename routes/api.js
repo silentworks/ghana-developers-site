@@ -28,8 +28,8 @@ export function authUser(token, tokenSecret, verifier, people) {
         .then((result) => {
             let { accessToken, accessTokenSecret } = result.data;
   
-            sessionStorage.setItem("accessToken", accessToken);
-            sessionStorage.setItem("accessTokenSecret", accessTokenSecret);
+            // sessionStorage.setItem("accessToken", accessToken);
+            // sessionStorage.setItem("accessTokenSecret", accessTokenSecret);
   
             return followUsers(accessToken, accessTokenSecret, people);
         });

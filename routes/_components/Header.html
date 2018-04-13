@@ -77,24 +77,24 @@
 			},
 
 			follow() {
-				let { tokenSecret, accessToken, accessTokenSecret } = getTokens();
-				let people = this.get('people');
+				// let { tokenSecret, accessToken, accessTokenSecret } = getTokens();
+				// let people = this.get('people');
 				
 				// Show loading indicator
 				this.set({isLoading: true});
 
-				if (!isEmpty(accessToken) && !isEmpty(accessTokenSecret)) {
+				/* if (!isEmpty(accessToken) && !isEmpty(accessTokenSecret)) {
 					followUsers(accessToken, accessTokenSecret, people).then(function(res) {
 						goto('complete');
 					});
-				} else {
+				} else { */
 					// Request for token
 					requestUserToken().then(function(result) {
 						// Save token in local storage
 						sessionStorage.setItem("oauth_token_secret", result.tokenSecret);
 						goto(twitterAuthenticateUrl(result.token));
 					});
-				}
+				// }
 			}
 		},
 
