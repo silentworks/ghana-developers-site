@@ -1,4 +1,4 @@
-<Header :people :isLoading :tweetShare :title :subtitle />
+<Header :people :isLoading :tweetShare :title :subtitle :hideButton />
 
 <main class="container">
 	<div class="pure-g">
@@ -33,6 +33,7 @@
 			return {
 				tweetShare: false,
 				isLoading: false,
+				hideButton: false,
 				title: 'Looking for developers who are doing great things in Ghana?',
 				subtitle: 'Here is a list of developers you can follow on Twitter.',
 				people: [],

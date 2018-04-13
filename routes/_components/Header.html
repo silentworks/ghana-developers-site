@@ -6,6 +6,7 @@
 	<section class="hero">
 		<h1 class="hero-title">{{title}}</h1>
 		<h2 class="hero-subtitle">{{subtitle}}</h2>
+		{{#if !hideButton}}
 		<div class="follow-all-wrapper">
 			{{#if isLoading}}
 			<Loading />
@@ -17,6 +18,7 @@
 				{{/if}}
 			{{/if}}
 		</div>
+		{{/if}}
 	</section>
 </header>
 
@@ -99,7 +101,8 @@
 		data() {
 			return {
 				tweetShare: false,
-				isLoading: false
+				isLoading: false,
+				hideButton: false
 			}
 		}
 	};

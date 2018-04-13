@@ -12,8 +12,18 @@
 			twitterUrl="{{person.twitterUrl}}" />
 	</div>
 	{{/each}}
+	<div class="hidden-links">
+		<a href="/callback">Callback</a>
+		<a href="/complete">Complete</a>
+		<a href="/404">404</a>
+	</div>
 </Layout>
 
+<style>
+	.hidden-links {
+		display: none;
+	}
+</style>
 <script>
 	import Layout from './_components/Layout.html';
 	import Person from './_components/Person.html';
