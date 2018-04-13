@@ -12,7 +12,9 @@
 			<Loading />
 			{{else}}
 				{{#if tweetShare}}
-				<button class="follow-all pure-button" on:click='share()'>Tweet</button>
+				<a href="/complete" on:click='share()'>
+					<img src="img/twitter-share.png" alt="Tweet">
+				</a>
 				{{else}}
 				<button class="follow-all pure-button" on:click='follow()'>Follow all</button>
 				{{/if}}

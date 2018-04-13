@@ -1,5 +1,4 @@
 import axios from 'axios';
-// let API_URL = "https://api.followcreatives.com/v1/";
 
 let request = axios.create({
   baseURL: process.env.API_URL,

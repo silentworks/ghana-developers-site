@@ -17,3 +17,7 @@ export function getTokens() {
 export function isEmpty(val) {
     return val === null || val === "undefined";
 };
+
+export function siteUrl() {
+    return process.env.SITE_URL;
+}

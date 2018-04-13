@@ -1,0 +1,31 @@
+<!-- Facebook OpenGraph -->
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_us" />
+<meta property="og:url" content="{{ siteUrl }}" />
+<meta property="og:title" content="Ghana Developers - Follow Creatives" />
+<meta property="og:description" content=""/>
+<meta property="og:image" content="{{ siteUrl }}img/social-media-banner.png"/>
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Ghana Developers" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@followcr8tives" />
+<meta name="twitter:creator" content="@followcr8tives" />
+<meta name="twitter:title" content="Ghana Developers - Follow Creatives" />
+<meta name="twitter:description" content=""/>
+<meta name="twitter:image" content="{{ siteUrl }}img/social-media-banner.png" />
+
+<script>
+    import { siteUrl } from '../utils.js';
+
+    export default {
+        data() {
+            return {
+                siteUrl: siteUrl()
+            }
+        }
+    };
+</script>
